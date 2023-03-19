@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<!--
+	/*
+	* Copyright (с) 2016 Evgenii Dobrovidov
+	* This file is part of "SketchPad".
+	*
+	* "SketchPad" is free software: you can redistribute it and/or modify
+	* it under the terms of the GNU General Public License as published by
+	* the Free Software Foundation, either version 3 of the License, or
+	* (at your option) any later version.
+	*
+	* "SketchPad" is distributed in the hope that it will be useful,
+	* but WITHOUT ANY WARRANTY; without even the implied warranty of
+	* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	* GNU General Public License for more details.
+	*
+	* You should have received a copy of the GNU General Public License
+	* along with "SketchPad".  If not, see <http://www.gnu.org/licenses/>.
+	*/
+	-->
+	<head>
+	    <meta charset="utf-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	    <meta name="description" content="Sketch Pad"/>
+	
+	    <title>Sketch Pad</title>
+	
+		<link rel="stylesheet"  href="lib/tau/wearable/theme/brown/tau.min.css">
+	    <link rel="stylesheet" href="css/style.css" />
+	
+		<script src="language.js"></script>
+	    <script type="text/javascript" src="js/jquery.js"></script>
+	    <script type="text/javascript" src="js/sketch.js"></script>
+	    <script type="text/javascript" src="js/battery.js"></script>
+	    <script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>
+	</head>
+	<body>	
+		<div class="ui-page ui-page-active" id="main">
+			<header class="ui-header">
+				<h2 class="ui-title ui-icon" style="background-image:url(res/header.png)" data-localize="main_title">Sketch Pad</h2>
+			</header>
+			
+			<div id="confirm_delete_popup" class="ui-popup">
+				<div class="ui-popup-header" data-localize="delete_confirm_header">Confirm deletion</div>
+				<div class="ui-popup-content" data-localize="delete_confirm_msg">Are you sure you want to delete this drawing?</div>
+				<div class="ui-popup-footer ui-grid-col-2">
+					<a id="delete_popup_yes" href="#" class="ui-btn" data-localize="delete_confirm_yes">Yes</a>
+					<a id="delete_popup_no" href="#" class="ui-btn" data-localize="delete_confirm_no">No</a>
+				</div>
+			</div>
+			
+			<div class="ui-content" id="mainpage_content">
+				<div class="section-changer" id="mainpage_section_changer">
+					
+					<section class="ui-section-active" id="new_drawing_section">
+						<a href="#drawing">
+							<img src="res/new_drawing.png">
+							<span data-localize="new_drawing_title">New drawing</span>
+						</a>					
+					</section>
+					
+					<section id="load_drawing_section">
+						<div class="no-images-message">
+							<span data-localize="no_saved_images_msg">No saved images yet.</span>
+						</div>
+						<ul class="ui-listview"></ul>					
+					</section>
+					
+				</div>
+			</div>
+		</div>
+			
+		<div class="ui-page" id="draw_settings">
+			<header class="ui-header">
+				<h2 class="ui-title ui-icon" style="background-image:url(res/settings.png)" data-localize="settings_title">Settings</h2>
+			</header>
+			<div class="ui-content">
+				<div class="settings-group" id="image_title_group">
+					<span class="setting-label" data-localize="settings_image_name">Image title</span>
+					<input type="text" value="Image 1" id="settings_image_name" class="big">
+				</div>
+				<div class="settings-group" id="image_mark_group" style="display:none">
+					<span class="setting-label" data-localize="settings_image_name">Image mark</span>
+					<table class="default-input">
+						<tr>
+							<td class="left"><span class="default-image-name" data-localize="default_filename">Image</span></td>
+							<td class="right"><input class="small" type="text" value="" id="settings_image_name"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="settings-group">
+					<span class="setting-label" data-localize="settings_brush_size">Brush size</span>
+					<div class="brush-size">
+						<div class="size x40" data-size="40"><span></span></div>
+						<div class="size x30" data-size="30"><span></span></div>
+						<div class="active size x20" data-size="20"><span></span></div>
+						<div class="size x10" data-size="10"><span></span></div>
+					</div>
+				</div>
+				<div class="settings-group">
+					<span class="setting-label" data-localize="settings_brush_color">Brush color</span>
+					<div class="brush-color">
+						<img src="res/red_pencil.png" data-color="be1d1d">
+						<img src="res/green_pencil.png" data-color="92ce1d">
+						<img src="res/blue_pencil.png" data-color="69bbef">
+						<img src="res/yellow_pencil.png" data-color="febb00">
+					</div>
+				</div>
+				<div class="settings-group">
+					<a href="javascript:void(0)" class="ui-btn" data-localize="settings_clear_canvas" id="settings_clear_canvas">Clear canvas</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="ui-page" id="drawing">
+			<div id="canvas_container"></div>
+			<img class="flick-up-icon" src="res/settings_button.png">
+		</div>
+       
+		<script src="js/app.js" defer="defer"></script>
+	</body>
+</html>

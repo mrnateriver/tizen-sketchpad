@@ -1,0 +1,236 @@
+/*
+* Copyright (с) 2016 Evgenii Dobrovidov
+* This file is part of "SketchPad".
+*
+* "SketchPad" is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* "SketchPad" is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with "SketchPad".  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+* {
+    font-family: Verdana, Lucida Sans, Arial, Helvetica, sans-serif;
+}
+
+html, body {
+	border-collapse: collapse;
+	border-spacing: 0;
+    margin: 0;
+    padding: 0;
+    background: #222;
+    overflow: hidden;
+}
+
+.ui-header .ui-title {
+	color: white;
+}
+
+/* MAIN */
+.ui-page#main .ui-content section {
+	display: -webkit-flex;
+	-webkit-flex-direction: column;
+	-webkit-justify-content: center;
+
+	overflow: hidden;
+	overflow-y: auto;
+}
+.ui-page#main .ui-content section.no-flex {
+	display: block;
+}
+.ui-page#main .ui-content section img, .ui-page#main .ui-content section span {
+	display: block;
+	width: auto;
+	margin: 0 auto;
+	text-align: center;
+}
+.ui-page#main .ui-content section img {
+	margin-bottom: 20px;
+}
+.small-screen .ui-page#main .ui-content section img {
+	width: 50%;
+}
+.ui-page#main .ui-content section span {
+	padding: 0 30px;
+	font-size: 140%;
+	font-weight: bold;
+}
+.lang-ru .ui-page#main .ui-content section span {
+	font-size: 120%;
+}
+.small-screen .ui-page#main .ui-content section span {
+	font-size: 120%;
+}
+.lang-ru.small-screen .ui-page#main .ui-content section span {
+	font-size: 100%;
+}
+
+.ui-page#main .ui-content section div.no-images-message.hidden {
+	display: none;
+}
+
+.ui-page#main .ui-content section#load_drawing_section > ul > li > div.ui-action-text:active,
+.ui-page#main .ui-content section#load_drawing_section > ul > li > div.ui-action-delete:active {
+	background-color: rgba(89,74,59,1);
+	color: rgba(245,245,245,1);
+}
+
+#main #mainpage_section_changer {
+	width: 200%;
+	height: 100%;
+}
+#main #mainpage_section_changer #new_drawing_section {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+}
+#main #mainpage_section_changer #load_drawing_section {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 100%;
+}
+
+/* DRAWING */
+#drawing {
+	position: relative;
+}
+#drawing .flick-up-icon {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: 500;
+}
+
+/* SETTINGS */
+#draw_settings .settings-group {
+	margin: 20px 0;
+	padding: 0 20px;
+}
+#draw_settings .settings-group .setting-label {
+	display: block;
+}
+#draw_settings .settings-group input {
+	margin: 10px 0;
+	width: 100%;
+	border: 0;
+	border-radius: 10px;
+	padding: 5px 15px;
+}
+#draw_settings .settings-group table.default-input {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+#draw_settings .settings-group table.default-input td {
+	 padding: 0;
+}
+#draw_settings .settings-group span.default-image-name {
+	vertical-align: middle;
+	display: inline-block;
+	background: white;
+	color: black;
+	padding: 5px 0 5px 15px;
+	border-radius: 10px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin-right: 0;/*-10px*/
+}
+#draw_settings .settings-group input.small {
+	display: inline-block;
+	vertical-align: middle;
+	/*width: 179px;*/
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	padding-left: 10px;
+}
+#draw_settings .settings-group .brush-color {
+	border-bottom: 1px solid gainsboro;
+	margin-top: 20px;
+	position: relative;
+	overflow: hidden;
+}
+#draw_settings .settings-group .brush-color:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+#draw_settings .settings-group .brush-color > img {
+	width: 25%;	
+	display: block;
+	float: left;
+	margin-bottom: -20px;
+	position: relative;
+	bottom: -50px;
+	transition: bottom 1s;
+}
+.small-screen #draw_settings .settings-group .brush-color > img {
+	bottom: -40px;
+}
+#draw_settings .settings-group .brush-color > img.active {
+	bottom: 0;
+}
+#draw_settings .settings-group .brush-size {
+	margin-top: 20px;
+}
+#draw_settings .settings-group .brush-size:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#draw_settings .settings-group .brush-size > .size {
+	line-height: 80px;
+	height: 80px;
+	width: 25%;
+	text-align: center;
+	float: left;
+}
+.small-screen #draw_settings .settings-group .brush-size > .size {
+	line-height: 70px;
+	height: 70px;
+}
+#draw_settings .settings-group .brush-size > .size.active {
+	background-color: rgba(89,74,59,1);
+	border-radius: 10px;
+}
+#draw_settings .settings-group .brush-size > .size > span {
+	border-radius: 100%;
+	background-color: white;
+	display: inline-block;
+	vertical-align: middle;
+}
+#draw_settings .settings-group .brush-size > .size.active > span {
+	background-color: rgba(245,245,245,1);	
+}
+#draw_settings .settings-group .brush-size > .size.x40 > span {
+	width: 77%;
+	height: 77%;
+}
+#draw_settings .settings-group .brush-size > .size.x30 > span {
+	width: 55%;
+	height: 55%;
+}
+#draw_settings .settings-group .brush-size > .size.x20 > span {
+	width: 40%;
+	height: 40%;
+}
+#draw_settings .settings-group .brush-size > .size.x10 > span {
+	width: 25%;
+	height: 25%;
+}
+#draw_settings .settings-group > .ui-btn {
+	
+}
